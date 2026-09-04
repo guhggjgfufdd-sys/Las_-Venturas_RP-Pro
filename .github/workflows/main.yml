@@ -29,6 +29,16 @@ jobs:
         run: |
           find . -name "build.gradle" -exec sed -i '/splunk/Id' {} \;
 
+      - name: Add JitPack repository globally
+        run: |
+          cat > init.gradle << 'EOF'
+          allprojects {
+              repositories {
+                  maven { url 'https://jitpack.io' }
+              }
+          }
+          EOF
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -42,7 +52,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew assembleDebug --stacktrace
+        run: ./gradlew assembleDebug --stacktrace -I init.gradle
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
