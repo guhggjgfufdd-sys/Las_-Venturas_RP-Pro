@@ -66,7 +66,7 @@ import java.util.concurrent.TimeUnit;
 @Obfuscate
 public class MainActivity extends AppCompatActivity {
 
-    public String[] tabTitles = { "Servers", "Info", "Settings" };
+    public String[] tabTitles = { "Las Venturas", "News", "Settings" };
     public int[] tabImages = { R.drawable.ic_mainmenu, R.drawable.ic_server, R.drawable.ic_settingsmenu};
     public int[] tabSelectedImages = { R.drawable.ic_mainmenu_on, R.drawable.ic_serveron, R.drawable.ic_settingsmenu_on};
 
@@ -90,6 +90,15 @@ public class MainActivity extends AppCompatActivity {
 
         mServersList = new ArrayList<>();
         mFavoriteServersList = new ArrayList<>();
+
+        // Las Venturas RP is shipped as the default community server. The user can
+        // still add or remove servers through the existing favorites flow.
+        SAMPServerInfo lasVenturas = new SAMPServerInfo(
+                1, 21299, "Las Venturas RP", "142.132.203.47", 21299,
+                0, 0, 0, 0, 0, "Arabic");
+        lasVenturas.setServerMode("Arabic Roleplay");
+        lasVenturas.setFavorite(true);
+        mFavoriteServersList.add(lasVenturas);
 
         ConfigValidator.validateConfigFiles(this);
 

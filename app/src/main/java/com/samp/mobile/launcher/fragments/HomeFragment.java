@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
         discord_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent link = new Intent(Intent.ACTION_VIEW, Uri.parse("https://discord.gg/jvKM7HR3Dc"));
+                Intent link = new Intent(Intent.ACTION_VIEW, Uri.parse("https://discord.gg/eZFKQ83ke"));
                 startActivity(link);
             }
         });

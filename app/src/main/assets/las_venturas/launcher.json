@@ -1,0 +1,34 @@
+{
+  "launcherName": "Las Venturas RP",
+  "displayName": "Las Venturas RP",
+  "language": "ar",
+  "server": {
+    "host": "142.132.203.47",
+    "port": 21299,
+    "label": "Las Venturas Roleplay",
+    "mode": "Arabic Roleplay",
+    "website": "https://discord.gg/eZFKQ83ke"
+  },
+  "cache": {
+    "version": "2.11",
+    "url": "https://github.com/guhggjgfufdd-sys/SAMP-Mobile-Launcher-RN/releases/download/v1.0/2.11.gtasa.zip",
+    "targetDirectory": "/storage/emulated/0/GTA/",
+    "sha256": "VERIFY_BEFORE_DISTRIBUTION"
+  },
+  "compatibility": {
+    "arm32": true,
+    "arm64": true,
+    "requiresOriginalGameData": true,
+    "supportsPawnFilterscripts": true,
+    "supportsTextDraws": true,
+    "supportsDialogs": true,
+    "supportsVoice": true
+  },
+  "gameplay": {
+    "eyeMenu": true,
+    "customizableControls": true,
+    "parachuteSpawn": true,
+    "roleplayRulesBeforeJoin": true,
+    "customMapTheme": "las_venturas_night"
+  }
+}

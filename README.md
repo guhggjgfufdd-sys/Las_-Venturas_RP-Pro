@@ -1,59 +1,44 @@
-# SA-MP 2.10 (Android)
+# Las Venturas RP — SA-MP Mobile
 
-Modern **SA-MP 2.10** client for **Grand Theft Auto: San Andreas (Android)**.
+هذه النسخة مبنية على فرع **SA-MP Mobile GTA-2.10**، وهو الفرع الذي يوفر مكتبات **ARM32 (`armeabi-v7a`) وARM64 (`arm64-v8a`)**. تمت إضافة إعدادات Las Venturas RP، تسجيل السيرفر الافتراضي، رابط المجتمع، وقالب Pawn ابتدائي قابل للتوسعة.
 
-> **Status:** Active Development 🚧
+## إعداد السيرفر
 
-## Features
+| الحقل | القيمة |
+|---|---|
+| الاسم | Las Venturas RP |
+| العنوان | `142.132.203.47:21299` |
+| Discord | [discord.gg/eZFKQ83ke](https://discord.gg/eZFKQ83ke) |
+| كاش GTA | [2.11.gtasa.zip](https://github.com/guhggjgfufdd-sys/SAMP-Mobile-Launcher-RN/releases/download/v1.0/2.11.gtasa.zip) |
+| مسار الكاش | `/storage/emulated/0/GTA/` |
 
-* ✅ Android **ARM32 and ARM64** support
-* ✅ ShadowHook integration
-* ✅ Support for modern Android devices
-* ✅ Game cache location:
+إعداد اللانشر القابل للقراءة موجود في `app/src/main/assets/las_venturas/launcher.json`. وضعت خانة `sha256` كـ `VERIFY_BEFORE_DISTRIBUTION` لأن رابط GitHub الحالي لا يوفر قيمة تحقق منشورة؛ يجب حسابها بعد تنزيل الملف قبل توزيعه على اللاعبين.
 
-```text
-/storage/emulated/0/GTA/
-```
+## الميزات المضافة في هذه الدفعة
 
-## Requirements
+* دعم بناء ARM32 وARM64 عبر إعدادات فرع GTA-2.10 الموجودة أصلًا.
+* إضافة Las Venturas RP تلقائيًا إلى قائمة السيرفرات المفضلة.
+* تحديث اسم التطبيق إلى Las Venturas RP.
+* تحديث رابط Discord إلى رابط المجتمع المقدم.
+* ملف مواصفات يصف دعم المايك، الإعدادات القابلة للتعديل، قائمة العين، الخريطة المخصصة، قبول القوانين، والمظلة.
+* قالب سيرفر Pawn في `server/las_venturas_rp.pwn` يتضمن `/rules` و`/accept` و`/eye` و`/parachute` و`/voice`، وهو نقطة بداية لربط inventory/mobile/animations عبر filterscripts.
 
-* Android device
-* ARM32 or ARM64 processor
-
-## Installation
-
-1. Install the APK.
-
-2. Download the game cache:
-
-[**Download GTA game cache**](https://drive.google.com/file/d/1JW2RscmpHNz8g51phxjjKkubTV2ZDEmD/view?usp=drivesdk)
-
-[**Download CRMP game cache**](https://drive.google.com/file/d/13W2zAgsMAFAvTTS7YVGtgSgyv2BPYbLk/view?usp=drivesdk)
-
-3. Extract the cache to:
-
-```text
-/storage/emulated/0/GTA/
-```
-
-4. Launch the game.
-
-## Building
-
-Clone the `GTA-2.10` branch:
+## البناء
 
 ```bash
-git clone --branch GTA-2.10 --single-branch https://github.com/kuzia15/SAMP-Mobile.git
+./gradlew assembleDebug
 ```
 
-Open the project in Android Studio and build it using the appropriate ARM32 or ARM64 configuration.
+الناتج المتوقع يكون داخل `app/build/outputs/apk/`. يجب تنفيذ البناء على Android Studio/SDK يحتوي على NDK `26.2.11394342` كما هو محدد في المشروع.
 
-## Project Status
+## قالب السكربت
 
-This project is under active development. New fixes and improvements may be added over time.
+الملف `server/las_venturas_rp.pwn` ليس نظام رول بلاي كاملًا جاهزًا للإنتاج؛ هو قالب نظيف وآمن للبدء. أنظمة الحسابات، الوظائف، الاقتصاد، المركبات، المخزون، الموبايل، الصوت، الخريطة، والأنميشن تحتاج filterscripts أو plugins متوافقة مع إصدار خادم SA-MP المستخدم، ولا يمكن ضمان تشغيل أي سكربت عشوائي بلا تعديل بسبب اختلاف الـ callbacks والـ natives والـ plugins.
 
-## License
+## ملاحظة مهمة عن إصدار 2.11
 
-This project is provided for educational and research purposes only.
+فرع GTA-2.11 في المشروع الأصلي **ARM64 فقط**، بينما طلب ARM32 وARM64 يتطلب فرع GTA-2.10. لذلك لا ينبغي خلط مكتبات كاش 2.11 مع عميل 2.10 إلا بعد اختبار كامل على جهاز حقيقي. كذلك يجب توزيع ملفات اللعبة والكاش فقط إذا كانت لديك حقوق توزيعها.
 
-Grand Theft Auto, Grand Theft Auto: San Andreas and SA-MP are trademarks of their respective owners. This project is not affiliated with or endorsed by Rockstar Games, Take-Two Interactive or the original SA-MP development team.
+## الترخيص والمسؤولية
+
+المشروع لأغراض تعليمية وبحثية، وSA-MP وGrand Theft Auto علامات تجارية لأصحابها. احصل على نسخة اللعبة الأصلية، وراجع تراخيص أي plugins أو filterscripts قبل نشرها.
