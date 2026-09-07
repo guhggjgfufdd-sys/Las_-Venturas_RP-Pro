@@ -23,12 +23,18 @@ public class FavoritesInfo {
         File file = new File(mContext.getExternalFilesDir(null), "SAMP/favorites.json");
         if (!file.exists()) {
             ClearFavorites();
+            serverList.add(new FavoriteServerData(1, 1, "142.132.203.47", 21299));
+            bLoaded = true;
+            Save(mContext);
             return;
         }
         try {
             String InputStreamToString = Util.InputStreamToString(new FileInputStream(file));
             if (InputStreamToString.isEmpty()) {
                 ClearFavorites();
+                serverList.add(new FavoriteServerData(1, 1, "142.132.203.47", 21299));
+                bLoaded = true;
+                Save(mContext);
                 return;
             }
             JSONArray jSONArray = new JSONObject(InputStreamToString).getJSONArray("servers");
