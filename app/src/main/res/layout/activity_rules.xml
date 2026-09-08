@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#0B131E">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp">
+
+        <ImageView
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/logo"
+            android:contentDescription="Las Venturas RP" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="قوانين Las Venturas RP"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/rules_countdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="سيتم الدخول تلقائياً خلال 10 ثوانٍ"
+            android:textColor="#D9A441"
+            android:textSize="16sp"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/news_card"
+            android:text="1. احترم اللاعبين والإدارة.
+
+2. ممنوع الغش أو استغلال الثغرات.
+
+3. التزم بالرول بلاي داخل المدينة.
+
+4. يمنع نشر المحتوى المخالف أو إزعاج الآخرين.
+
+5. استخدم المايك باحترام والتزم بتعليمات الإدارة."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:gravity="right"
+            android:lineSpacingExtra="5dp" />
+
+        <Button
+            android:id="@+id/rules_continue"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/button_br_red"
+            android:enabled="false"
+            android:text="جارٍ تجهيز الدخول..."
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+    </LinearLayout>
+</ScrollView>
