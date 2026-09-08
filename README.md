@@ -9,10 +9,10 @@
 | الاسم | Las Venturas RP |
 | العنوان | `142.132.203.47:21299` |
 | Discord | [discord.gg/eZFKQ83ke](https://discord.gg/eZFKQ83ke) |
-| كاش GTA | [2.11.gtasa.zip](https://github.com/guhggjgfufdd-sys/SAMP-Mobile-Launcher-RN/releases/download/v1.0/2.11.gtasa.zip) |
-| مسار الكاش | `/storage/emulated/0/GTA/` |
+| كاش GTA | [2.10 cache](https://drive.google.com/file/d/1JW2RscmpHNz8g51phxjjKkubTV2ZDEmD/view?usp=drivesdk) |
+| مسار الكاش | مجلد التطبيق، ويحتوي الأرشيف على `files/` |
 
-إعداد اللانشر القابل للقراءة موجود في `app/src/main/assets/las_venturas/launcher.json`. وضعت خانة `sha256` كـ `VERIFY_BEFORE_DISTRIBUTION` لأن رابط GitHub الحالي لا يوفر قيمة تحقق منشورة؛ يجب حسابها بعد تنزيل الملف قبل توزيعه على اللاعبين.
+إعداد اللانشر القابل للقراءة موجود في `app/src/main/assets/las_venturas/launcher.json`. تم فحص الأرشيف كاملًا: 716,092,010 بايت، 433 ملفًا، وSHA-256 هو `e06ce14e8e8ebc4bcb246aa57d9c2efdbcc99ad7e9c218`.
 
 ## الميزات المضافة في هذه الدفعة
 
