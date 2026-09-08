@@ -10,10 +10,12 @@
     "website": "https://discord.gg/eZFKQ83ke"
   },
   "cache": {
-    "version": "2.11",
-    "url": "https://github.com/guhggjgfufdd-sys/SAMP-Mobile-Launcher-RN/releases/download/v1.0/2.11.gtasa.zip",
-    "targetDirectory": "/storage/emulated/0/GTA/",
-    "sha256": "VERIFY_BEFORE_DISTRIBUTION"
+    "version": "2.10",
+    "root": "files",
+    "archive": "zip",
+    "archiveSizeBytes": 716092010,
+    "sha256": "e06ce14e8e8ebc4bcb246aa57d9c2efdbcc99ad7e9c218",
+    "downloadUrl": "https://drive.usercontent.google.com/download?id=1JW2RscmpHNz8g51phxjjKkubTV2ZDEmD&export=download&confirm=t&uuid=492ecdc7-c09d-449b-923d-a7e6b51762ba"
   },
   "compatibility": {
     "arm32": true,
