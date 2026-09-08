@@ -32,5 +32,16 @@
     "parachuteSpawn": true,
     "roleplayRulesBeforeJoin": true,
     "customMapTheme": "las_venturas_night"
-  }
+  },
+  "serverLock": {
+    "enabled": true,
+    "host": "142.132.203.47",
+    "port": 21299
+  },
+  "rulesCountdownSeconds": 10,
+  "news": [
+    "إطلاق اللانشر الرسمي لـ Las Venturas RP",
+    "دعم ARM32 وARM64 والمايك والمودات",
+    "تابع فعاليات المدينة من تبويب الأخبار"
+  ]
 }
