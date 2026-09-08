@@ -102,6 +102,12 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
     </activity>
 
+    <activity
+        android:name=".launcher.GameInstallActivity"
+        android:screenOrientation="portrait"
+        android:exported="false"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
     <service android:name=".launcher.UpdateService" android:enabled="true" android:exported="false"/>
 
     <service
