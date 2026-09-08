@@ -1,32 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:fillViewport="true"
+    android:background="#0B131E">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.09"
-        app:srcCompat="@drawable/logo" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Our community"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_17sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.639" />
+        android:orientation="vertical"
+        android:padding="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="أخبار Las Venturas RP"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:gravity="right" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="كل ما يخص المدينة في مكان واحد"
+            android:textColor="#9BA9B8"
+            android:textSize="14sp"
+            android:gravity="right" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/news_card"
+            android:text="إطلاق اللانشر الرسمي
+
+تم تجهيز نسخة Las Venturas RP لتعمل على ARM32 وARM64 مع دعم المايك، المودات والواجهات الحديثة."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:gravity="right"
+            android:lineSpacingExtra="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/news_card"
+            android:text="تحديث المدينة
+
+تابع الإعلانات والفعاليات داخل السيرفر، والتزم بالقوانين قبل دخولك إلى اللعبة."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:gravity="right"
+            android:lineSpacingExtra="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/news_card"
+            android:text="الدعم والمجتمع
+
+للحصول على المساعدة أو متابعة الأخبار، استخدم روابط المجتمع الموجودة في الصفحة الرئيسية."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:gravity="right"
+            android:lineSpacingExtra="4dp" />
+    </LinearLayout>
+</ScrollView>
