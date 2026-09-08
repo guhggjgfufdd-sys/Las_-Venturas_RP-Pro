@@ -26,6 +26,7 @@ import com.samp.mobile.game.GTASA;
 import com.samp.mobile.game.SAMP;
 import com.samp.mobile.launcher.MainActivity;
 import com.samp.mobile.launcher.RulesActivity;
+import com.samp.mobile.launcher.GameInstallActivity;
 import com.samp.mobile.launcher.data.FavoritesInfo;
 import com.samp.mobile.launcher.util.ButtonAnimator;
 import com.samp.mobile.launcher.util.SAMPServerInfo;
@@ -174,28 +175,14 @@ public class FavouriteServerInformationFragment extends Dialog {
                     }
                 }
 
-                File file1 = new File(act.getExternalFilesDir(null) + "/Text/american.dxt");
-                if(!file1.exists())
-                {
-                    File file2 = new File(act.getExternalFilesDir(null) + "/Textures/fonts/RussianFont.png");
-                    if(!file2.exists())
-                    {
-                        Toast.makeText(act, "Some important files in your modified data are missing, such as \"Text\" and \"Textures\"" +
-                                "Please, fix it and after try again. ( You can get that files in my discord channel )", Toast.LENGTH_LONG).show();
-
-                        dismiss();
-                    }
-                    else {
-                        act.startActivity(new Intent(act, RulesActivity.class));
-                        act.finish();
-                        dismiss();
-                    }
-                }
-                else {
-                    act.startActivity(new Intent(act, RulesActivity.class));
-                    act.finish();
+                if (!GameInstallActivity.areGameFilesReady(act)) {
+                    act.startActivity(new Intent(act, GameInstallActivity.class));
                     dismiss();
+                    return;
                 }
+                act.startActivity(new Intent(act, RulesActivity.class));
+                act.finish();
+                dismiss();
             }
         });
 
