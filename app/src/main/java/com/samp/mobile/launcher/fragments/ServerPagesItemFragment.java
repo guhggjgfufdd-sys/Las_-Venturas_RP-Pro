@@ -1,5 +1,6 @@
 package com.samp.mobile.launcher.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import com.joom.paranoid.Obfuscate;
 import com.samp.mobile.R;
+import com.samp.mobile.launcher.GameInstallActivity;
 import com.samp.mobile.launcher.MainActivity;
 import com.samp.mobile.launcher.adapters.FavouriteServerAdapter;
 
@@ -46,7 +48,10 @@ public class ServerPagesItemFragment extends Fragment {
         ((MainActivity) getActivity()).hideKeyboard(getActivity());
 
         View addButton = view.findViewById(R.id.buttonServer);
-        if (addButton != null) addButton.setVisibility(View.GONE);
+        if (addButton != null) {
+            addButton.setVisibility(View.VISIBLE);
+            addButton.setOnClickListener(v -> startActivity(new Intent(requireContext(), GameInstallActivity.class)));
+        }
 
         RecyclerView recyclerView = view.findViewById(R.id.server_recycler);
         if (recyclerView.getItemAnimator() != null) {
