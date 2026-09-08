@@ -39,6 +39,7 @@ import com.samp.mobile.launcher.adapters.ServerAdapter;
 import com.samp.mobile.launcher.config.Config;
 import com.samp.mobile.launcher.data.FavoritesInfo;
 import com.samp.mobile.launcher.fragments.HomeFragment;
+import com.samp.mobile.launcher.fragments.NewsFragment;
 import com.samp.mobile.launcher.fragments.ServerPagesItemFragment;
 import com.samp.mobile.launcher.fragments.ServersFragment;
 import com.samp.mobile.launcher.fragments.SettingsFragment;
@@ -67,8 +68,8 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity {
 
     public String[] tabTitles = { "Las Venturas", "News", "Settings" };
-    public int[] tabImages = { R.drawable.ic_mainmenu, R.drawable.ic_server, R.drawable.ic_settingsmenu};
-    public int[] tabSelectedImages = { R.drawable.ic_mainmenu_on, R.drawable.ic_serveron, R.drawable.ic_settingsmenu_on};
+    public int[] tabImages = { R.drawable.ic_server, R.drawable.ic_baseline_notifications_24, R.drawable.ic_settingsmenu};
+    public int[] tabSelectedImages = { R.drawable.ic_serveron, R.drawable.ic_baseline_notifications_24, R.drawable.ic_settingsmenu_on};
 
     public static ArrayList<SAMPServerInfo> mServersList = new ArrayList<>();
     public static ArrayList<SAMPServerInfo> mFavoriteServersList = new ArrayList<>();
@@ -170,64 +171,12 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean getServersInfo()
     {
-        final boolean[] z = {false};
-        Volley.newRequestQueue(getApplicationContext()).add(new StringRequest("https://samp-mobile.shop/hosted.json", new Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject  = new JSONObject(new String(response.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
-                    JSONArray jsonArray = jsonObject.getJSONArray("query");
-                    for(int i = 0; i<jsonArray.length(); i++) {
-                        JSONObject jSONObject = jsonArray.getJSONObject(i);
-                        SAMPServerInfo sAMPServerInfo = new SAMPServerInfo();
-                        sAMPServerInfo.setId(jSONObject.getInt("number"));
-                        sAMPServerInfo.setServerName(jSONObject.getString("name"));
-                        sAMPServerInfo.setAddress(jSONObject.getString("ip"));
-                        sAMPServerInfo.setPort(jSONObject.getInt("port"));
-                        sAMPServerInfo.setCurrentPlayerCount(jSONObject.getInt("online"));
-                        sAMPServerInfo.setMaxPlayerCount(jSONObject.getInt("maxplayers"));
-                        sAMPServerInfo.setHasPassword(jSONObject.getBoolean("password"));
-                        sAMPServerInfo.setServerStatus(SAMPServerInfo.Status.ONLINE);
-                        sAMPServerInfo.setPing(12);
-                        getServerList().add(sAMPServerInfo);
-                    }
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-
-                for (Fragment fragment : getSupportFragmentManager().getFragments()) {
-                    if (fragment instanceof ServersFragment) {
-                        while (!fragment.isAdded()) {
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        if(fragment.isAdded()) {
-                            for (Fragment fragment2 : fragment.getChildFragmentManager().getFragments()) {
-                                if ((fragment2 instanceof ServerPagesItemFragment) && ((ServerPagesItemFragment) fragment2).getPage() == 1 && fragment2.getView() != null) {
-                                    Log.d("AXL", "getserverslist");
-                                    ((RecyclerView.Adapter) Objects.requireNonNull(((RecyclerView) ((View) fragment2.requireView()).findViewById(R.id.server_recycler)).getAdapter())).notifyDataSetChanged();
-                                }
-                            }
-                        }
-                    }
-                }
-
-                z[0] = true;
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("x1y2z", "error " + error.toString());
-                getServersInfo();
-                z[0] = false;
-            }
-        }));
-
-        return z[0];
+        mServersList.clear();
+        SAMPServerInfo official = new SAMPServerInfo(1, 1, Config.SERVER_NAME,
+                Config.SERVER_HOST, Config.SERVER_PORT, 0, 0, 0, 0, 0, "Arabic");
+        official.setServerStatus(SAMPServerInfo.Status.ONLINE);
+        mServersList.add(official);
+        return true;
     }
 
     public void getFavoriteServersInfo()
@@ -327,13 +276,13 @@ public class MainActivity extends AppCompatActivity {
         @NonNull
         @Override
         public Fragment getItem(int position) {
-            if(position == 1)
+            if(position == 0)
                 return new ServersFragment();
-            else if(position == 0)
-                return new HomeFragment();
+            else if(position == 1)
+                return new NewsFragment();
             else if(position == 2)
                 return new SettingsFragment();
-            return new HomeFragment();
+            return new ServersFragment();
         }
 
         @Override
