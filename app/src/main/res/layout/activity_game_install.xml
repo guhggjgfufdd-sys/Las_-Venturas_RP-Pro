@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B1422"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تثبيت ملفات اللعبة"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="نزّل الكاش كاملًا أو استورد مجلد files المنقول من جهازك. لن تبدأ اللعبة قبل اكتمال الملفات المطلوبة."
+            android:textColor="#B8C7D9"
+            android:textSize="15sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="#15243A"
+            android:orientation="vertical"
+            android:padding="18dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="حالة العملية"
+                android:textColor="#8FA7C2"
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/install_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="اختر تنزيل الملفات أو استيرادها يدويًا"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+            <ProgressBar
+                android:id="@+id/install_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_marginTop="18dp"
+                android:max="10000"
+                android:progress="0"
+                android:progressTint="#39D98A" />
+            <TextView
+                android:id="@+id/install_percent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="0%"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/install_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="0 B / 0 B"
+                android:textColor="#B8C7D9"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/install_speed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="0 B/ث"
+                android:textColor="#8FA7C2"
+                android:textSize="13sp" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/install_ready"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="ملفات اللعبة غير مكتملة بعد"
+            android:textColor="#B8C7D9"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/button_download_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="تنزيل الكاش كاملًا"
+            android:textAllCaps="false" />
+        <Button
+            android:id="@+id/button_import_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="استيراد مجلد اللعبة يدويًا"
+            android:textAllCaps="false" />
+        <Button
+            android:id="@+id/button_cancel_install"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="إلغاء"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</ScrollView>
