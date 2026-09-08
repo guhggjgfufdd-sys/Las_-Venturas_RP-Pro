@@ -25,6 +25,7 @@ import com.samp.mobile.R;
 import com.samp.mobile.game.GTASA;
 import com.samp.mobile.game.SAMP;
 import com.samp.mobile.launcher.MainActivity;
+import com.samp.mobile.launcher.RulesActivity;
 import com.samp.mobile.launcher.data.FavoritesInfo;
 import com.samp.mobile.launcher.util.ButtonAnimator;
 import com.samp.mobile.launcher.util.SAMPServerInfo;
@@ -74,6 +75,7 @@ public class FavouriteServerInformationFragment extends Dialog {
         ImageView mClose = findViewById(R.id.server_close);
         EditText mServerPassword = findViewById(R.id.server_password);
         Button mSave = findViewById(R.id.save_favorites);
+        mSave.setVisibility(View.GONE);
 
         mSave.setVisibility(View.VISIBLE);
 
@@ -184,13 +186,13 @@ public class FavouriteServerInformationFragment extends Dialog {
                         dismiss();
                     }
                     else {
-                        act.startActivity(new Intent(act, SAMP.class));
+                        act.startActivity(new Intent(act, RulesActivity.class));
                         act.finish();
                         dismiss();
                     }
                 }
                 else {
-                    act.startActivity(new Intent(act, SAMP.class));
+                    act.startActivity(new Intent(act, RulesActivity.class));
                     act.finish();
                     dismiss();
                 }
