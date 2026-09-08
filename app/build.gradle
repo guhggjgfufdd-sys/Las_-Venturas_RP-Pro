@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    compileSdk 34
+    compileSdk 35
     allprojects {repositories {maven { url 'https://maven.aliyun.com/repository/jcenter' }}}
     namespace 'com.samp.mobile'
 
