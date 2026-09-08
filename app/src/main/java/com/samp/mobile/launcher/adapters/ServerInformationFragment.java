@@ -25,6 +25,7 @@ import com.samp.mobile.R;
 import com.samp.mobile.game.GTASA;
 import com.samp.mobile.game.SAMP;
 import com.samp.mobile.launcher.MainActivity;
+import com.samp.mobile.launcher.RulesActivity;
 import com.samp.mobile.launcher.util.ButtonAnimator;
 import com.samp.mobile.launcher.util.SAMPServerInfo;
 import com.samp.mobile.launcher.util.SharedPreferenceCore;
@@ -149,13 +150,13 @@ public class ServerInformationFragment extends Dialog {
                         dismiss();
                     }
                     else {
-                        activity.startActivity(new Intent(activity, SAMP.class));
+                        activity.startActivity(new Intent(activity, RulesActivity.class));
                         activity.finish();
                         dismiss();
                     }
                 }
                 else {
-                    activity.startActivity(new Intent(activity, SAMP.class));
+                    activity.startActivity(new Intent(activity, RulesActivity.class));
                     activity.finish();
                     dismiss();
                 }
