@@ -1,1 +1,10 @@
-<resources>\n    <string name="app_name">Las Venturas RP</string>\n    <string name="action_settings">Settings</string>\n    <string name="first_fragment_label">Las Venturas RP</string>\n    <string name="second_fragment_label">News</string>\n    <string name="next">Next</string>\n    <string name="previous">Previous</string>\n    <string name="hello_first_fragment">Las Venturas RP</string>\n    <string name="hello_second_fragment">Las Venturas RP news</string>\n</resources>\n
+<resources>
+    <string name="app_name">Las Venturas RP</string>
+    <string name="action_settings">Settings</string>
+    <string name="first_fragment_label">Las Venturas RP</string>
+    <string name="second_fragment_label">News</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Las Venturas RP</string>
+    <string name="hello_second_fragment">Las Venturas RP news</string>
+</resources>

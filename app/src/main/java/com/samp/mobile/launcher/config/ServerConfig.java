@@ -1,1 +1,15 @@
-package com.samp.mobile.launcher.config;\n\n/** Single-server configuration for Las Venturas RP. */\npublic final class ServerConfig {\n    public static final String BRAND_NAME = "Las Venturas RP";\n    public static final String HOST = "142.132.203.47";\n    public static final int PORT = 21299;\n    public static final String ADDRESS = HOST + ":" + PORT;\n    public static final String DISCORD_URL = "https://discord.gg/eZFKQ83ke";\n    public static final String CACHE_PATH = "/storage/emulated/0/GTA/";\n\n    private ServerConfig() {\n        // Utility class.\n    }\n}\n
+package com.samp.mobile.launcher.config;
+
+/** Single-server configuration for Las Venturas RP. */
+public final class ServerConfig {
+    public static final String BRAND_NAME = "Las Venturas RP";
+    public static final String HOST = "142.132.203.47";
+    public static final int PORT = 21299;
+    public static final String ADDRESS = HOST + ":" + PORT;
+    public static final String DISCORD_URL = "https://discord.gg/eZFKQ83ke";
+    public static final String CACHE_PATH = "/storage/emulated/0/GTA/";
+
+    private ServerConfig() {
+        // Utility class.
+    }
+}

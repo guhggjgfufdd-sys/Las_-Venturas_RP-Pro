@@ -37,6 +37,7 @@ import com.samp.mobile.R;
 import com.samp.mobile.launcher.adapters.FavouriteServerAdapter;
 import com.samp.mobile.launcher.adapters.ServerAdapter;
 import com.samp.mobile.launcher.config.Config;
+import com.samp.mobile.launcher.config.ServerConfig;
 import com.samp.mobile.launcher.data.FavoritesInfo;
 import com.samp.mobile.launcher.fragments.HomeFragment;
 import com.samp.mobile.launcher.fragments.ServerPagesItemFragment;
@@ -159,7 +160,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public boolean getServersInfo()\n    {\n        getServerList().clear();\n\n        SAMPServerInfo server = new SAMPServerInfo();\n        server.setProjId(1);\n        server.setId(1);\n        server.setServerName(ServerConfig.BRAND_NAME);\n        server.setAddress(ServerConfig.HOST);\n        server.setPort(ServerConfig.PORT);\n        server.setCurrentPlayerCount(0);\n        server.setMaxPlayerCount(0);\n        server.setHasPassword(false);\n        server.setServerMode("Roleplay");\n        server.setLanguage("Arabic");\n        server.setServerStatus(SAMPServerInfo.Status.ONLINE);\n        server.setPing(0);\n        server.setFavorite(false);\n        server.setType(SAMPServerInfo.Official.HOSTED);\n        getServerList().add(server);\n\n        for (Fragment fragment : getSupportFragmentManager().getFragments()) {\n            if (fragment instanceof ServersFragment && fragment.isAdded()) {\n                for (Fragment child : fragment.getChildFragmentManager().getFragments()) {\n                    if (child instanceof ServerPagesItemFragment && child.getView() != null) {\n                        RecyclerView list = child.getView().findViewById(R.id.server_recycler);\n                        if (list != null && list.getAdapter() != null) {\n                            list.getAdapter().notifyDataSetChanged();\n                        }\n                    }\n                }\n            }\n        }\n        return true;\n    }\n\npublic void getFavoriteServersInfo()
+    public boolean getServersInfo()
+    {
+        getServerList().clear();
+
+        SAMPServerInfo server = new SAMPServerInfo();
+        server.setProjId(1);
+        server.setId(1);
+        server.setServerName(ServerConfig.BRAND_NAME);
+        server.setAddress(ServerConfig.HOST);
+        server.setPort(ServerConfig.PORT);
+        server.setCurrentPlayerCount(0);
+        server.setMaxPlayerCount(0);
+        server.setHasPassword(false);
+        server.setServerMode("Roleplay");
+        server.setLanguage("Arabic");
+        server.setServerStatus(SAMPServerInfo.Status.ONLINE);
+        server.setPing(0);
+        server.setFavorite(false);
+        server.setType(SAMPServerInfo.Official.HOSTED);
+        getServerList().add(server);
+
+        for (Fragment fragment : getSupportFragmentManager().getFragments()) {
+            if (fragment instanceof ServersFragment && fragment.isAdded()) {
+                for (Fragment child : fragment.getChildFragmentManager().getFragments()) {
+                    if (child instanceof ServerPagesItemFragment && child.getView() != null) {
+                        RecyclerView list = child.getView().findViewById(R.id.server_recycler);
+                        if (list != null && list.getAdapter() != null) {
+                            list.getAdapter().notifyDataSetChanged();
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+public void getFavoriteServersInfo()
     {
         for(int i = 0; i< FavoritesInfo.getServerList(this).size(); i++)
         {
