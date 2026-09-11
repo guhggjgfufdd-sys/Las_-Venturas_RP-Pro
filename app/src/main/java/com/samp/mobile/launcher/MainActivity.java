@@ -159,69 +159,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public boolean getServersInfo()
-    {
-        final boolean[] z = {false};
-        Volley.newRequestQueue(getApplicationContext()).add(new StringRequest("https://samp-mobile.shop/hosted.json", new Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject  = new JSONObject(new String(response.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
-                    JSONArray jsonArray = jsonObject.getJSONArray("query");
-                    for(int i = 0; i<jsonArray.length(); i++) {
-                        JSONObject jSONObject = jsonArray.getJSONObject(i);
-                        SAMPServerInfo sAMPServerInfo = new SAMPServerInfo();
-                        sAMPServerInfo.setId(jSONObject.getInt("number"));
-                        sAMPServerInfo.setServerName(jSONObject.getString("name"));
-                        sAMPServerInfo.setAddress(jSONObject.getString("ip"));
-                        sAMPServerInfo.setPort(jSONObject.getInt("port"));
-                        sAMPServerInfo.setCurrentPlayerCount(jSONObject.getInt("online"));
-                        sAMPServerInfo.setMaxPlayerCount(jSONObject.getInt("maxplayers"));
-                        sAMPServerInfo.setHasPassword(jSONObject.getBoolean("password"));
-                        sAMPServerInfo.setServerStatus(SAMPServerInfo.Status.ONLINE);
-                        sAMPServerInfo.setPing(12);
-                        getServerList().add(sAMPServerInfo);
-                    }
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-
-                for (Fragment fragment : getSupportFragmentManager().getFragments()) {
-                    if (fragment instanceof ServersFragment) {
-                        while (!fragment.isAdded()) {
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        if(fragment.isAdded()) {
-                            for (Fragment fragment2 : fragment.getChildFragmentManager().getFragments()) {
-                                if ((fragment2 instanceof ServerPagesItemFragment) && ((ServerPagesItemFragment) fragment2).getPage() == 1 && fragment2.getView() != null) {
-                                    Log.d("AXL", "getserverslist");
-                                    ((RecyclerView.Adapter) Objects.requireNonNull(((RecyclerView) ((View) fragment2.requireView()).findViewById(R.id.server_recycler)).getAdapter())).notifyDataSetChanged();
-                                }
-                            }
-                        }
-                    }
-                }
-
-                z[0] = true;
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("x1y2z", "error " + error.toString());
-                getServersInfo();
-                z[0] = false;
-            }
-        }));
-
-        return z[0];
-    }
-
-    public void getFavoriteServersInfo()
+    public boolean getServersInfo()\n    {\n        getServerList().clear();\n\n        SAMPServerInfo server = new SAMPServerInfo();\n        server.setProjId(1);\n        server.setId(1);\n        server.setServerName(ServerConfig.BRAND_NAME);\n        server.setAddress(ServerConfig.HOST);\n        server.setPort(ServerConfig.PORT);\n        server.setCurrentPlayerCount(0);\n        server.setMaxPlayerCount(0);\n        server.setHasPassword(false);\n        server.setServerMode("Roleplay");\n        server.setLanguage("Arabic");\n        server.setServerStatus(SAMPServerInfo.Status.ONLINE);\n        server.setPing(0);\n        server.setFavorite(false);\n        server.setType(SAMPServerInfo.Official.HOSTED);\n        getServerList().add(server);\n\n        for (Fragment fragment : getSupportFragmentManager().getFragments()) {\n            if (fragment instanceof ServersFragment && fragment.isAdded()) {\n                for (Fragment child : fragment.getChildFragmentManager().getFragments()) {\n                    if (child instanceof ServerPagesItemFragment && child.getView() != null) {\n                        RecyclerView list = child.getView().findViewById(R.id.server_recycler);\n                        if (list != null && list.getAdapter() != null) {\n                            list.getAdapter().notifyDataSetChanged();\n                        }\n                    }\n                }\n            }\n        }\n        return true;\n    }\n\npublic void getFavoriteServersInfo()
     {
         for(int i = 0; i< FavoritesInfo.getServerList(this).size(); i++)
         {

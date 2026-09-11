@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
         discord_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent link = new Intent(Intent.ACTION_VIEW, Uri.parse("https://discord.gg/jvKM7HR3Dc"));
+                Intent link = new Intent(Intent.ACTION_VIEW, Uri.parse(ServerConfig.DISCORD_URL));
                 startActivity(link);
             }
         });
@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
         internet_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent link = new Intent(Intent.ACTION_VIEW, Uri.parse("https://samp-mobile.shop"));
+                Intent link = new Intent(Intent.ACTION_VIEW, Uri.parse(ServerConfig.DISCORD_URL));
                 startActivity(link);
             }
         });
