@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Environment;
 
 import com.samp.mobile.launcher.util.Util;
+import com.samp.mobile.launcher.config.ServerConfig;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -20,46 +21,11 @@ public class FavoritesInfo {
     private static ArrayList<FavoriteServerData> serverList = new ArrayList<>();
 
     public static void Load(Context mContext) {
-        File file = new File(mContext.getExternalFilesDir(null), "SAMP/favorites.json");
-        if (!file.exists()) {
-            ClearFavorites();
-            serverList.add(new FavoriteServerData(1, 1, "142.132.203.47", 21299));
-            bLoaded = true;
-            Save(mContext);
-            return;
-        }
-        try {
-            String InputStreamToString = Util.InputStreamToString(new FileInputStream(file));
-            if (InputStreamToString.isEmpty()) {
-                ClearFavorites();
-                serverList.add(new FavoriteServerData(1, 1, "142.132.203.47", 21299));
-                bLoaded = true;
-                Save(mContext);
-                return;
-            }
-            JSONArray jSONArray = new JSONObject(InputStreamToString).getJSONArray("servers");
-            for (int i = 0; i < jSONArray.length(); i++) {
-                JSONObject jSONObject = jSONArray.getJSONObject(i);
-                int i2 = jSONObject.getInt("id");
-                int i3 = jSONObject.getInt("serverid");
-                String str = "";
-                int i4 = 7777;
-                if (!jSONObject.isNull("ip")) {
-                    str = jSONObject.getString("ip");
-                }
-                if (!jSONObject.isNull("port")) {
-                    i4 = jSONObject.getInt("port");
-                }
-                serverList.add(new FavoriteServerData(i2, i3, str, i4));
-            }
-            bLoaded = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            ClearFavorites();
-            Save(mContext);
-        }
+        ClearFavorites();
+        serverList.add(new FavoriteServerData(1, 1, ServerConfig.HOST, ServerConfig.PORT));
+        bLoaded = true;
+        Save(mContext);
     }
-
     public static void Save(Context context) {
         try {
             File file = new File(context.getExternalFilesDir(null), "SAMP/favorites.json");
@@ -89,35 +55,17 @@ public class FavoritesInfo {
     }
 
     public static boolean AddServer(Context context, int i, int i2, String str, int i3) {
+        if (!ServerConfig.HOST.equals(str) || ServerConfig.PORT != i3) {
+            return false;
+        }
         if (!bLoaded) {
             Load(context);
-        }
-        Iterator<FavoriteServerData> it = serverList.iterator();
-        while (it.hasNext()) {
-            FavoriteServerData next = it.next();
-            if (next.ip.equals(str) && next.port == i3) {
-                return false;
-            }
-        }
-        serverList.add(new FavoriteServerData(i, i2, str, i3));
-        return true;
-    }
-
-    public static boolean RemoveServer(Context context, String str, int i) {
-        if (!bLoaded) {
-            Load(context);
-        }
-        Iterator<FavoriteServerData> it = serverList.iterator();
-        while (it.hasNext()) {
-            FavoriteServerData next = it.next();
-            if (next.ip.equals(str) && next.port == i) {
-                serverList.remove(next);
-                return true;
-            }
         }
         return false;
     }
-
+    public static boolean RemoveServer(Context context, String str, int i) {
+        return false;
+    }
     public static boolean IsServerExists(Context context, int i, int i2, String str, int i3, boolean z) {
         if (!bLoaded) {
             Load(context);
